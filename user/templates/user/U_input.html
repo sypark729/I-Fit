@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 신체 입력</title>
+</head>
+<body>
+    <h1>사용자 신체 입력</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="height">키 (cm):</label>
+        <input type="number" name="height" id="height" required><br>
+
+        <label for="weight">몸무게 (kg):</label>
+        <input type="number" name="weight" id="weight" required><br>
+
+        <label for="gender">성별:</label>
+        <select name="gender" id="gender">
+            <option value="male">남성</option>
+            <option value="female">여성</option>
+        </select><br>
+
+        <button type="submit">입력 완료</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<form method="post" action="{% url 'clothes' %}">
+    {% csrf_token %}
+    <label for="clothing-type">옷의 종류:</label>
+    <select name="clothing-type" id="clothing-type">
+        <option value="outer">아우터</option>
+        <option value="top">상의</option>
+        <option value="bottom">바지</option>
+        <option value="skirt">치마</option>
+    </select><br>
+
+    <div id="size-inputs">
+        <!-- 아우터와 상의 치수 입력 필드 -->
+        <div id="outer-top-sizes" style="display: none;">
+            <label for="shoulder">어깨너비 (cm):</label>
+            <input type="number" name="shoulder" id="shoulder"><br>
+            <label for="chest">가슴단면 (cm):</label>
+            <input type="number" name="chest" id="chest"><br>
+            <label for="total-length">총장 (cm):</label>
+            <input type="number" name="total-length" id="total-length"><br>
+            <label for="sleeve">소매길이 (cm):</label>
+            <input type="number" name="sleeve" id="sleeve"><br>
+        </div>
+
+        <!-- 바지와 치마 치수 입력 필드 -->
+        <div id="bottom-skirt-sizes" style="display: none;">
+            <label for="waist">허리단면 (cm):</label>
+            <input type="number" name="waist" id="waist"><br>
+            <label for="hip">엉덩이단면 (cm):</label>
+            <input type="number" name="hip" id="hip"><br>
+            <label for="bottom-length">밑단단면 (cm):</label>
+            <input type="number" name="bottom-length" id="bottom-length"><br>
+            <label for="thigh">허벅지단면 (cm):</label>
+            <input type="number" name="thigh" id="thigh"><br>
+        </div>
+    </div>
+
+    <button type="submit">추천 받기</button>
+</form>

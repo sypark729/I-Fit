@@ -57,7 +57,7 @@ ROOT_URLCONF = 'sizing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [], # BASE_DIR / 'subdir' << root dir templates를 인식
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +69,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'sizing.wsgi.application'
 

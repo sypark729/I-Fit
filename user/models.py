@@ -8,9 +8,10 @@ class UserBodyInput(models.Model):
         ('female', '여성'),
     )
 
+    gender = models.CharField(max_length=6, choices=gender_choices)
     height = models.FloatField()
     weight = models.FloatField()
-    gender = models.CharField(max_length=6, choices=gender_choices)
+
 
     def __str__(self):
-        return f"{self.height}cm, {self.weight}kg ({self.gender})"
+        return f"({self.gender}), {self.height}cm, {self.weight}kg"

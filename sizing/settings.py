@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,7 +58,10 @@ ROOT_URLCONF = 'sizing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [], # BASE_DIR / 'subdir' << root dir templates를 인식
+        'DIRS': [os.path.join(BASE_DIR, 'main/templates'),
+                 os.path.join(BASE_DIR, 'user/templates'),
+                 os.path.join(BASE_DIR, 'clothes/templates'),
+                 os.path.join(BASE_DIR, 'recommendation/templates'),], # BASE_DIR / 'subdir' << root dir templates를 인식
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

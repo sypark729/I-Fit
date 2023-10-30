@@ -100,6 +100,7 @@
         <div class="form-container">
             <h2>옷 치수 입력</h2>
             <form method="post">
+                {% csrf_token %}
                 <label for="clothing-type">옷의 종류:</label>
                 <select name="clothing-type" id="clothing-type" onchange="toggleSizeInputs()">
                     <option value="outer">아우터</option>

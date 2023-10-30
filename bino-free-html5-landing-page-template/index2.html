@@ -1,5 +1,4 @@
 <!doctype html>
-{% load static %}
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -10,30 +9,31 @@
         <title>I-Fit start Page</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        <link rel="stylesheet" type="text/css" href="static/css/iconfont.css">
-        <link rel="stylesheet" type="text/css" href="static/css/slick/slick.css">
-        <link rel="stylesheet" type="text/css" href="static/css/slick/slick-theme.css">
-        <link rel="stylesheet" type="text/css" href="static/css/stylesheet.css">
-        <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="static/css/jquery.fancybox.css">
-        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css">
-        <!--        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">-->
+
+        <link rel="stylesheet" href="assets/css/iconfont.css">
+        <link rel="stylesheet" href="assets/css/slick/slick.css">
+        <link rel="stylesheet" href="assets/css/slick/slick-theme.css">
+        <link rel="stylesheet" href="assets/css/stylesheet.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
 
 
         <!--For Plugins external css-->
-        <link rel="stylesheet" type="text/css" href="static/css/plugins.css" />
+        <link rel="stylesheet" href="assets/css/plugins.css" />
 
         <!--Theme custom css -->
-        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
 
         <!--Theme Responsive css-->
-        <link rel="stylesheet" type="text/css" href="static/css/responsive.css" />
+        <link rel="stylesheet" href="assets/css/responsive.css" />
 
-        <script src="static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
     <body data-spy="scroll" data-target=".navbar-collapse">
 
@@ -117,7 +117,7 @@
                                         <div class="single_home_slider">
                                             <div class="main_home wow fadeInUp" data-wow-duration="700ms">
                                                 <h3>Our Clients Are Our First Priority</h3>
-                                                <h1>WELCOME TO I-Fit</h1>
+                                                <h1>WELCOME TO BINO</h1>
                                                 <div class="separator"></div>
                                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
                                                     standard dummy text ever since the 1500s, when an unknown printer took a galley 
@@ -203,37 +203,21 @@
             <a href="#"><i class="fa fa-chevron-up"></i></a>
         </div>
 
-        <script src="static/js/vendor/jquery-1.11.2.min.js"></script>
-        <script src="static/js/vendor/bootstrap.min.js"></script>
+        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.min.js"></script>
 
-        <script src="static/js/jquery.magnific-popup.js"></script>
-        <script src="static/js/jquery.mixitup.min.js"></script>
-        <script src="static/js/jquery.easing.1.3.js"></script>
-        <script src="static/js/jquery.masonry.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.js"></script>
+        <script src="assets/js/jquery.mixitup.min.js"></script>
+        <script src="assets/js/jquery.easing.1.3.js"></script>
+        <script src="assets/js/jquery.masonry.min.js"></script>
 
         <!--slick slide js -->
-        <script src="static/css/slick/slick.js"></script>
-        <script src="static/css/slick/slick.min.js"></script>
+        <script src="assets/css/slick/slick.js"></script>
+        <script src="assets/css/slick/slick.min.js"></script>
 
 
-        <script src="static/js/plugins.js"></script>
-        <script src="static/js/main.js"></script>
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/main.js"></script>
 
     </body>
 </html>
-
-
-
-<!-- main.html 
-<section class="text-gray-600 body-font">
-  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-    <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Welcom I-Fit</h1>
-      <p class="mb-8 leading-relaxed">사용자 사이즈 추천 I-Fit 입니다</p>
-      <div class="flex justify-center">
-        <a href="{% url 'user' %}"><button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">NEXT</button></a>
-      </div>
-    </div>
-  </div>
-</section> -->

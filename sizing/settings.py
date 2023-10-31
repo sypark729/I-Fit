@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main',
+    'accounts',
     'user',
     'clothes',
     'recommendation',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'main/templates'),
+                 os.path.join(BASE_DIR, 'accounts/templates'),
                  os.path.join(BASE_DIR, 'user/templates'),
                  os.path.join(BASE_DIR, 'clothes/templates'),
                  os.path.join(BASE_DIR, 'recommendation/templates'),], # BASE_DIR / 'subdir' << root dir templates를 인식
@@ -111,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko'
 
 TIME_ZONE = 'UTC'
 

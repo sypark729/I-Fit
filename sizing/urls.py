@@ -20,6 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),  # 기본 관리자 URL은 그대로 유지
     path("", include("main.urls")),  # /main/ 경로를 main 앱의 URL과 연결
+    path("accounts/", include("accounts.urls")), # accounts 경로
     path("user/", include("user.urls")),  # /user/ 경로를 user 앱의 URL과 연결
     path("clothes/", include("clothes.urls")),  # /clothes/ 경로를 clothes 앱의 URL과 연결
     path("recommendation/", include("recommendation.urls")),  # /recommendation/ 경로를 recommendation 앱의 URL과 연결

@@ -1,22 +1,12 @@
-{% block content %}
-  <div class="container">
-    <h1>로그인</h1>
-    <form method="POST" action="{% url 'accounts:login' %}">
-      {% csrf_token %}
-      ID : 
-      <input name="username" type="text" value="">
-      <br>
-      <br>
-      Password :
-      <input name="password" type="password" value="">
-      <br>
-      <br>
-      <input class="btn btn-primary" type="submit" value="로그인">
-    </form>
-
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
-  </div>
-
-{% endblock %}
+<div class="container">
+  <h1>로그인</h1>
+<form method="POST" action="{% url 'accounts:login' %}">
+  {% csrf_token %}
+  <p>아이디</p>
+  <input type="text" name="username">
+  <br>
+  <p>비밀번호</p>
+  <input type="password" name="password">
+  <br><br>
+  <input type="submit" value="로그인">
+</form>

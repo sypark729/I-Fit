@@ -69,8 +69,8 @@
                                                 <li><a href="{% url 'main:main' %}">HOME</a></li>
                                                 <li><a href="{% url 'accounts:login' %}">로그인</a></li>
                                                 <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
-                                                <li><a href="#pricing">PRICING</a></li>
-                                                <li><a href="#team">TEAM</a></li>
+                                                <li><a href="{% url 'user:user' %}">사이즈 수정</a></li>
+                                                <li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
                                                 <li><a href="#blog">BLOG</a></li>
                                                 <li><a href="#contact">CONTACT</a></li>
                                             </ul>
@@ -111,7 +111,7 @@
                                                         // "시작하기" 버튼을 클릭했을 때 이벤트를 처리합니다.
                                                         document.getElementById("startButton").addEventListener("click", function() {
                                                             // 사용자를 "사용자신체정보입력.html" 페이지로 리디렉션합니다.
-                                                            window.location.href = "{% url 'user' %}";
+                                                            window.location.href = "{% url 'user:user' %}";
                                                         });
                                                     </script>
                                                    <!-- <a href="" class="btn btn-default">LEARN MORE</a>-->
@@ -227,19 +227,3 @@
 
     </body>
 </html>
-
-
-
-<!-- main.html 
-<section class="text-gray-600 body-font">
-  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-    <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Welcom I-Fit</h1>
-      <p class="mb-8 leading-relaxed">사용자 사이즈 추천 I-Fit 입니다</p>
-      <div class="flex justify-center">
-        <a href="{% url 'user' %}"><button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">NEXT</button></a>
-      </div>
-    </div>
-  </div>
-</section> -->

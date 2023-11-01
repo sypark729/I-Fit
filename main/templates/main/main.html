@@ -1,9 +1,6 @@
 <!doctype html>
 {% load static %}
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -54,9 +51,6 @@
                                                 <span class="icon-bar"></span>
                                                 <span class="icon-bar"></span>
                                             </button>
-                                           <!-- <a class="navbar-brand" href="#home" style="size: 1%;">
-                                                <img src="assets/images/logo2.PNG"/>
-                                            </a>-->
                                         </div>
 
                                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,8 +65,6 @@
                                                 <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
                                                 <li><a href="{% url 'user:user' %}">사이즈 수정</a></li>
                                                 <li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
-                                                <li><a href="#blog">BLOG</a></li>
-                                                <li><a href="#contact">CONTACT</a></li>
                                             </ul>
 
 
@@ -108,44 +100,28 @@
                                                 <div class="home_btn">
                                                     <a id="startButton" class="btn btn-lg m_t_10">시작하기</a>
                                                     <script>
-                                                        // "시작하기" 버튼을 클릭했을 때 이벤트를 처리합니다.
-                                                        document.getElementById("startButton").addEventListener("click", function() {
-                                                            // 사용자를 "사용자신체정보입력.html" 페이지로 리디렉션합니다.
+                                                        document.getElementById("startButton").addEventListener("click", function() {                                                           
+                                                            window.location.href = "{% url 'accounts:login' %}";
+                                                        });
+                                                    </script>
+                                                </div>
+                                                </div>
+
+                                            </div>
+                                        
+                                        <div class="single_home_slider">
+                                            <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                                <h3>Try Recommend Clothes Service</h3>
+                                                <h1>WELCOME TO I-FIT</h1>
+                                                <div class="separator"></div>
+                                                <p>I-Fit을 이용하는 분들에게 맞춤 의류 서비스를 제공합니다.</p>
+                                                <div class="home_btn">
+                                                    <a id="startButton2" class="btn btn-lg m_t_10">시작하기</a>
+                                                    <script>
+                                                        document.getElementById("startButton2").addEventListener("click", function() {
                                                             window.location.href = "{% url 'user:user' %}";
                                                         });
                                                     </script>
-                                                   <!-- <a href="" class="btn btn-default">LEARN MORE</a>-->
-                                                </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="single_home_slider">
-                                            <div class="main_home wow fadeInUp" data-wow-duration="700ms">
-                                                <h3>Our Clients Are Our First Priority</h3>
-                                                <h1>WELCOME TO I-Fit</h1>
-                                                <div class="separator"></div>
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                                                    standard dummy text ever since the 1500s, when an unknown printer took a galley 
-                                                    of type and scrambled it to make a type specimen book.</p>
-                                                <div class="home_btn">
-                                                    <a href="" class="btn btn-lg m_t_10" >GET STARTED NOW</a>
-                                                    <a href="" class="btn btn-default">LEARN MORE</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="single_home_slider">
-                                            <div class="main_home wow fadeInUp" data-wow-duration="700ms">
-                                                <h3>Our Clients Are Our First Priority</h3>
-                                                <h1>WELCOME TO BINO</h1>
-                                                <div class="separator"></div>
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                                                    standard dummy text ever since the 1500s, when an unknown printer took a galley 
-                                                    of type and scrambled it to make a type specimen book.</p>
-                                                <div class="home_btn">
-                                                    <a href="" class="btn btn-lg m_t_10">GET STARTED NOW</a>
-                                                    <!--<a href="" class="btn btn-default">LEARN MORE</a>-->
                                                 </div>
 
                                             </div>
@@ -170,18 +146,12 @@
                                 <div class="row">
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="flowus">
-                                            <a href=""><i class="fa fa-facebook"></i></a>
-                                            <a href=""><i class="fa fa-twitter"></i></a>
-                                            <a href=""><i class="fa fa-google-plus"></i></a>
-                                            <a href=""><i class="fa fa-instagram"></i></a>
-                                            <a href=""><i class="fa fa-youtube"></i></a>
-                                            <a href=""><i class="fa fa-dribbble"></i></a>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6 col-xs-12">
                                         <div class="copyright_text">
-                                            <p class=" wow fadeInRight" data-wow-duration="1s">Made with <i class="fa fa-heart"></i> by <a href="http://bootstrapthemes.co">Bootstrap Themes</a>2016. All Rights Reserved</p>
+                                            <p class=" wow fadeInRight" data-wow-duration="1s">Made by I-Fit Team<i class="fa fa-heart"></i> </a>2023. I-Fit Web Site</p>
                                         </div>
                                     </div>
                                 </div>
@@ -190,16 +160,6 @@
                     </div>
                 </div>
             </section><!-- End off footer Section-->
-
-
-
-
-
-
-
-
-
-
 
         </div>
 

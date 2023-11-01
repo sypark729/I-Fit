@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <div class="container">
   <h1>로그인</h1>
 <form method="POST" action="{% url 'accounts:login' %}">
@@ -10,3 +13,4 @@
   <br><br>
   <input type="submit" value="로그인">
 </form>
+{% endblock %}

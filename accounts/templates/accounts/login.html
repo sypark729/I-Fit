@@ -1,16 +1,22 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="container">
-  <h1>로그인</h1>
-<form method="POST" action="{% url 'accounts:login' %}">
-  {% csrf_token %}
-  <p>아이디</p>
-  <input type="text" name="username">
-  <br>
-  <p>비밀번호</p>
-  <input type="password" name="password">
-  <br><br>
-  <input type="submit" value="로그인">
-</form>
+
+<body>
+  <div class="container">
+    <h1>로그인</h1>
+  <form method="POST" action="{% url 'accounts:login' %}">
+    {% csrf_token %}
+    <p>아이디</p>
+    <input type="text" name="username">
+    <br>
+    <p>비밀번호</p>
+    <input type="password" name="password">
+    <br><br>
+    <input type="submit" value="로그인">
+  </form>
+</body>
+
+
 {% endblock %}

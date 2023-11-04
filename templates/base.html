@@ -1,0 +1,75 @@
+<!-- base.html -->
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+	<head>
+		<title>WELCOME TO I-FIT</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="{% url 'main:main' %}" class="logo"><strong>I-FIT</strong> 'Recommend clothes size to users WebSite'</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/?locale=ko_KR" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="https://www.instagram.com/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="https://html5up.net" class="icon brands fa-html5"><span class="label">Html5</span></a></li>
+										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+								</header>
+								{% block content %}
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>'I-FIT' <br />
+												</h1>
+											<p>맞춤 의류 서비스를 제공합니다.</p>
+										</header>
+										<p>'나색'은 자신만의 색상을 찾아주는 웹 서비스입니다. 자신의 피부색을 촬영하여 업로드하면, 여러 분의 피부색과 동일한 오늘의 의상 컨셉을 알려줍니다. 모든 서비스는 무료입니다. 지금 바로 시작해보세요!</p>
+										<ul class="actions">
+											<li><a href="#" class="button big">더 알아보기</a></li>
+										</ul>
+									</div>
+									<span class="image object">
+										<img src="static\images\logo2.PNG" alt="" style="max-width: 400px; margin-left: auto; margin-right: auto;"/>
+									</span>
+								</section>
+
+								{% endblock %}
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Made by I-FIT Team. 2023 I-FIT Site. Design by <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+            
+		<!-- Scripts type="text/css" -->
+			<script src="static/js/jquery.min.js" type="text/js"></script>
+			<script src="static/js/browser.min.js" type="text/js"></script>
+			<script src="static/js/breakpoints.min.js" type="text/js"></script>
+			<script src="static/js/util.js" type="text/js"></script>
+			<script src="static/js/main.js" type="text/js"></script>
+
+          
+	</body>
+	
+        
+	
+</html>

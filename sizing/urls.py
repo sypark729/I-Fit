@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),  # 기본 관리자 URL은 그대로 유지
     path("", include("main.urls")),  # /main/ 경로를 main 앱의 URL과 연결

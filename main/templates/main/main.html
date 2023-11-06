@@ -1,244 +1,189 @@
-<!DOCTYPE HTML>
-
+<!doctype html>
 {% load static %}
-<html>
-	<head>
-		<title>I-FIT</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="static\css\main.css" />
-	</head>
-	<!--<div class='preloader'><div class='loaded'>&nbsp;</div></div>-->
-	<body class="is-preload">
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>I-Fit start Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
-		
-		<!-- Wrapper -->
-			<div id="wrapper">
-				<!-- Main -->
-					
-					<div id="main">
-						<div class="inner">
+        <link rel="stylesheet" type="text/css" href="static/css/iconfont.css">
+        <link rel="stylesheet" type="text/css" href="static/css/slick/slick.css">
+        <link rel="stylesheet" type="text/css" href="static/css/slick/slick-theme.css">
+        <link rel="stylesheet" type="text/css" href="static/css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/jquery.fancybox.css">
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css">
+        <!--        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">-->
 
-							<!-- Header -->
-								<header id="header">
-									<a class="logo"><strong>I-FIT</strong> 'Recommend clothes size to users WebSite'</a>
-									<ul class="icons">
-										<li><a href="https://twitter.com/?lang=ko" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="https://www.facebook.com/?locale=ko_KR" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="https://www.instagram.com/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="https://html5up.net" class="icon brands fa-html5"><span class="label">Html5</span></a></li>
-										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									</ul>
-								</header>
 
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<header>
-											<h1>'I-FIT' <br />
-												</h1>
-											<p>맞춤 의류 서비스를 제공합니다.</p>
-										</header>
-										<p>'I-FIT'은 자신의 사이즈 찾아주는 웹 서비스입니다. 간단한 신체정보와 입을 옷에 대한 치수 등을 입력하면  비교를 하여 사이즈를 추천해드립니다. 지금 바로 시작해보세요!</p>
-										<ul class="actions">
-											<li><a href="{% url 'accounts:login' %}" class="button big">시작하기</a></li>
-										</ul>
-									</div>
-									<span class="image object">
-										<img src="static\images\logo2.PNG" alt="" style="max-width: 400px; margin-left: auto; margin-right: auto;"/>
-									</span>
-								</section>
+        <!--For Plugins external css-->
+        <link rel="stylesheet" type="text/css" href="static/css/plugins.css" />
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>I-FIT 소개</h2>
-									</header>
-									<div class="features">
-										<article>
-											<span class="icon fa-user"></span>
-											<div class="content">
-												<h3>I-FIT이란 </h3>
-												<p>온라인으로 옷을 구매시 각 브랜드 마다 사이즈표가 달라 내 치수에 맞게 주문한 옷이 맞지 않은 일이 빈번하게 일어나고 있습니다. 이 점을 줄이기 위해 탄생하게 된 I-FIT 입니다.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-pencil-ruler"></span>
-											<div class="content">
-												<h3>신체정보 및 치수 입력</h3>
-												<p>나의 신체정보 및 입을 옷의 종류를 고르고 그에 대한 사이즈표를 입력합니다. </p>
-											</div>
-										</article>
-										<article>
-											<span class="icon solid fa-equals"></span>
-											<div class="content">
-												<h3>사이즈 비교</h3>
-												<p>입력받은 신체정보를 통해 치수를 예측하고 입력받은 사이즈표와 비교를 합니다.</p>
-											</div>
-										</article>
-										<article>
-											<span class="icon fa-thumbs-up"></span>
-											<div class="content">
-												<h3>추천</h3>
-												<p>비교한 결과를 가지고 사용자에게 알맞은 사이즈를 추천해드립니다.</p>
-											</div>
-										</article>
-									</div>
-								</section>
+        <!--Theme custom css -->
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ipsum sed dolor</h2>
-									</header>
-									<div class="posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<h3>Interdum aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<h3>Nulla amet dolore</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<h3>Tempus ullamcorper</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-											<h3>Sed etiam facilis</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3>Feugiat lorem aenean</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-											<h3>Amet varius aliquam</h3>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-											<ul class="actions">
-												<li><a href="#" class="button">More</a></li>
-											</ul>
-										</article>
-									</div>
-								</section>
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" type="text/css" href="static/css/responsive.css" />
 
-						</div>
-					</div>
+        <script src="static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body data-spy="scroll" data-target=".navbar-collapse">
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
+        <div class='preloader'><div class='loaded'>&nbsp;</div></div>
+        <div class="culmn">
+            <header id="main_menu" class="header navbar-fixed-top">            
+                <div class="main_menu_bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="nave_menu">
+                                <nav class="navbar navbar-default">
+                                    <div class="container-fluid">
+                                        <!-- Brand and toggle get grouped for better mobile display -->
+                                        <div class="navbar-header">
+                                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                        </div>
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-								<!--<section>
-									<a href="{% url 'main:main' %}" class="image"><img src="static\images\logo2.PNG" alt="" /></a>
-								</section>-->
+                                        <!-- Collect the nav links, forms, and other content for toggling -->
 
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>메뉴</h2>
-									</header>
-									<ul>
-										<li><a href="main\templates\main\latestmain.html">입장 페이지</a></li>
-										<li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
-										<li><a href="{% url 'accounts:login' %}">로그인</a></li>
-										<li><a href="user\templates\user\U_input.html">신체정보 입력</a></li>
-										<li><a href="#">사이즈표 입력</a></li>
-										<!--<li>
-											<span class="opener">신체정보 및 사이즈표 입력</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>-->
-										<li><a href="{% url 'recommendation:recommendation' %}">결과</a></li>
 
-									</ul>
-								</nav>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>색상 소개</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="static\images\pic04.jpg" alt="" /></a>
-											<p>오늘의 쿨톤 의상 컨셉에 대해서 소개합니다.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="static\images\pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="static\images\pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">더보기</a></li>
-									</ul>
-								</section>
+                                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
+                                            <ul class="nav navbar-nav navbar-right">
+                                                <li><a href="{% url 'main:main' %}">HOME</a></li>
+                                                <li><a href="{% url 'accounts:login' %}">로그인</a></li>
+                                                <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
+                                                <li><a href="{% url 'user:user' %}">사이즈 수정</a></li>
+                                                <li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
+                                            </ul>
 
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Made by I-FIT Team. 2023 I-FIT Site. <br>Design by <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
 
-						</div>
-					</div>
+                                        </div>
 
-			</div>
+                                    </div>
+                                </nav>
+                            </div>	
+                        </div>
 
-		<!-- Scripts type="text/css" -->
-			<script src="static/js/jquery.min.js" type="text/js"></script>
-			<script src="static/js/browser.min.js" type="text/js"></script>
-			<script src="static/js/breakpoints.min.js" type="text/js"></script>
-			<script src="static/js/util.js" type="text/js"></script>
-			<script src="static/js/main.js" type="text/js"></script>
+                    </div>
 
-	</body>
+                </div>
+            </header> <!--End of header -->
+
+
+
+
+            <!--home Section -->
+            <section id="home" class="home">
+                <div class="overlay">
+                    <div class="home_skew_border">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <div class="main_home_slider text-center">
+                                        <div class="single_home_slider">
+                                            <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                                <h3>Recommend clothes size to users WebSite</h3>
+                                                <h1>WELCOME TO I-FIT</h1>
+                                                <div class="separator"></div>
+                                                <p>I-Fit을 이용하는 분들에게 맞춤 의류 서비스를 제공합니다.</p>
+                                                <div class="home_btn">
+                                                    <a id="startButton" class="btn btn-lg m_t_10">시작하기</a>
+                                                    <script>
+                                                        document.getElementById("startButton").addEventListener("click", function() {                                                           
+                                                            window.location.href = "{% url 'accounts:login' %}";
+                                                        });
+                                                    </script>
+                                                </div>
+                                                </div>
+
+                                            </div>
+                                        
+                                        <div class="single_home_slider">
+                                            <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                                <h3>Try Recommend Clothes Service</h3>
+                                                <h1>WELCOME TO I-FIT</h1>
+                                                <div class="separator"></div>
+                                                <p>I-Fit을 이용하는 분들에게 맞춤 의류 서비스를 제공합니다.</p>
+                                                <div class="home_btn">
+                                                    <a id="startButton2" class="btn btn-lg m_t_10">시작하기</a>
+                                                    <script>
+                                                        document.getElementById("startButton2").addEventListener("click", function() {
+                                                            window.location.href = "{% url 'user:user' %}";
+                                                        });
+                                                    </script>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </section><!--End of home section -->
+
+
+            
+            <!--Footer section-->
+            <section class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="main_footer">
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="flowus">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="copyright_text">
+                                            <p class=" wow fadeInRight" data-wow-duration="1s">Made by I-Fit Team<i class="fa fa-heart"></i> </a>2023. I-Fit Web Site</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- End off footer Section-->
+
+        </div>
+
+        <!-- START SCROLL TO TOP  -->
+
+        <div class="scrollup">
+            <a href="#"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <script src="static/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="static/js/vendor/bootstrap.min.js"></script>
+
+        <script src="static/js/jquery.magnific-popup.js"></script>
+        <script src="static/js/jquery.mixitup.min.js"></script>
+        <script src="static/js/jquery.easing.1.3.js"></script>
+        <script src="static/js/jquery.masonry.min.js"></script>
+
+        <!--slick slide js -->
+        <script src="static/css/slick/slick.js"></script>
+        <script src="static/css/slick/slick.min.js"></script>
+
+
+        <script src="static/js/plugins.js"></script>
+        <script src="static/js/main.js"></script>
+
+    </body>
 </html>

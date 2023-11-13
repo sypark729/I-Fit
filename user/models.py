@@ -16,6 +16,8 @@ class UserBodyInput(models.Model):
 
 
 class UserCompareInput(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     top_choices = [
         ('big', '크다'),
         ('soso', '보통'),
@@ -80,4 +82,4 @@ class UserCompareInput(models.Model):
     thighs = models.CharField(max_length=6, choices=thighs_choices)
 
     def __str__(self):
-        return f"{self.height}cm, {self.weight}kg, ({self.gender})"
+        return f"top: {self.top}, bottom: {self.bottom}, chest: {self.chest}, shoulder: {self.shoulder}, arm: {self.arm}, neck: {self.neck}, waist: {self.waist}, ass: {self.ass}, thighs: {self.thighs}"

@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from user.models import UserBodyInput
 from django.contrib import auth, messages
 from django.contrib.auth import logout
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 import hashlib
 
 # Create your views here.
@@ -67,3 +69,13 @@ def logout(request):
 
     # logout으로 GET 요청이 들어왔을 때, 로그인 화면을 띄워준다.
     return render(request, 'accounts/login.html')
+
+
+@login_required  # 로그인이 필요한 페이지로 설정
+def profile(request):
+    try:
+        user_body_input = UserBodyInput.objects.get(user=request.user)
+    except UserBodyInput.DoesNotExist:
+        user_body_input = None
+
+    return render(request, 'accounts/profile.html', {'user_body_input': user_body_input})

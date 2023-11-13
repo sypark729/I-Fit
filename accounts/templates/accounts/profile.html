@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>사용자 profile page</title>
+</head>
+<body>
+    <h1>안녕하세요, {{ request.user.username }}님 !</h1>
+    
+    {% if user_body_input %}
+        <p>키 : {{ user_body_input.height }} cm</p>
+        <p>몸무게 : {{ user_body_input.weight }} kg</p>
+        <p>성별 : {{ user_body_input.gender }}</p>
+    {% else %}
+        <p>No user body input available.</p>
+    {% endif %}
+</body>
+</html>

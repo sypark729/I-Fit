@@ -23,62 +23,63 @@ class UserCompareInput(models.Model):
         ('soso', '보통'),
         ('small', '작다'),
     ]
-    top = models.CharField(max_length=6, choices=top_choices)
 
     bottom_choices = [
         ('big', '크다'),
         ('soso', '보통'),
         ('small', '작다'),
     ]
-    bottom = models.CharField(max_length=6, choices=bottom_choices)
     
     chest_choices = [
         ('big', '크다'),
         ('soso', '보통'),
         ('small', '작다'),
     ]
-    chest = models.CharField(max_length=6, choices=chest_choices)
 
     shoulder_choices = [
         ('big', '크다'),
         ('soso', '보통'),
         ('small', '작다'),
     ]
-    shoulder = models.CharField(max_length=6, choices=shoulder_choices)
 
     arm_choices = [
         ('big', '크다'),
         ('soso', '보통'),
         ('small', '작다'),
     ]
-    arm = models.CharField(max_length=6, choices=arm_choices)
 
     neck_choices = [
         ('big', '크다'),
         ('soso', '보통'),
         ('small', '작다'),
     ]
-    neck = models.CharField(max_length=6, choices=neck_choices)
 
     waist_choices = [
         ('big', '크다'),
         ('soso', '보통'),
         ('small', '작다'),
     ]
-    waist = models.CharField(max_length=6, choices=waist_choices)
 
     ass_choices = [
         ('big', '크다'),
         ('soso', '보통'),
         ('small', '작다'),
     ]
-    ass = models.CharField(max_length=6, choices=ass_choices)
 
     thighs_choices = [
         ('big', '크다'),
         ('soso', '보통'),
         ('small', '작다'),
     ]
+    
+    top = models.CharField(max_length=6, choices=top_choices)
+    bottom = models.CharField(max_length=6, choices=bottom_choices)
+    chest = models.CharField(max_length=6, choices=chest_choices)
+    shoulder = models.CharField(max_length=6, choices=shoulder_choices)
+    arm = models.CharField(max_length=6, choices=arm_choices)
+    neck = models.CharField(max_length=6, choices=neck_choices)
+    waist = models.CharField(max_length=6, choices=waist_choices)
+    ass = models.CharField(max_length=6, choices=ass_choices)
     thighs = models.CharField(max_length=6, choices=thighs_choices)
 
     def __str__(self):

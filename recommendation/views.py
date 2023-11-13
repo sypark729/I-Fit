@@ -1,7 +1,7 @@
 from django.shortcuts import render
-#from .recommendation import recommend_size  # 딥러닝 모델을 사용할 모듈
 from .forms import SizeRecommendationForm
-# Create your views here.
+from django.http import HttpResponse  # HttpResponse 추가
+
 import logging
 
 def recommendation(request):
@@ -25,11 +25,9 @@ def recommendation(request):
                 additional_info['hip'] = form.cleaned_data['hip']
                 additional_info['bottom_length'] = form.cleaned_data['bottom_length']
                 additional_info['thigh'] = form.cleaned_data['thigh']
-            
-            # 딥러닝 모델을 사용하여 사이즈 추천
-           # recommended_size = recommend_size(gender, height, weight, clothing_type, additional_info)
-            
-            # 추천된 사이즈를 사용자에게 표시
-           # return render(request, 'recommendation_result.html', {'recommended_size': recommended_size})
+        else:
+            logging.warning('폼 유효성 검사 실패: %s', form.errors)
     else:
         form = SizeRecommendationForm()
+    
+    return render(request, 'recommendation/result.html', {'form': form})  # 적절한 템플릿 이름으로 변경

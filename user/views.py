@@ -10,7 +10,7 @@ from django.http import HttpResponse
 def user(request):
     # 사용자의 사이즈 정보가 있는지 확인
     try:
-        user_body_input = request.user.userbodyinput
+        user_body_input = UserBodyInput.objects.get(user=request.user)
         # 기존 정보가 있는 경우, 수정을 위한 폼을 생성
         if request.method == 'POST':
             form = UserBodyInputForm(request.POST, instance=user_body_input)
@@ -48,18 +48,17 @@ def user(request):
 
 def compare(request):
 
-    print('user input34444', request.session['user_height'])
+    print(request.session['user_height'])
+    print(request.session['user_weight'])
+    print(request.session['user_gender'])
 
-    # 사용자의 사이즈 정보가 있는지 확인
     try:
-        # 기존 정보가 있는 경우, 수정을 위한 폼을 생성
+        user_compare_input = UserCompareInput.objects.filter(user=request.user).latest('id')
+
         if request.method == 'POST':
-            print('user 432432')
 
-            form = UserCompareInputForm(request.POST)
+            form = UserCompareInputForm(request.POST, instance = user_compare_input)
             if form.is_valid():
-                print('user 22222222')
-
                 request.session['user_top'] = form.cleaned_data['top']
                 request.session['user_bottom'] = form.cleaned_data['bottom']
                 request.session['user_chest'] = form.cleaned_data['chest']
@@ -70,17 +69,17 @@ def compare(request):
                 request.session['user_ass'] = form.cleaned_data['ass']
                 request.session['user_thighs'] = form.cleaned_data['thighs']
 
-                #form.save()
+                form.save()
                 messages.success(request, '사이즈 정보가 수정되었습니다.')
                 return redirect('/clothes')
             else:
                 messages.error(request, '올바르지 않은 데이터가 포함되어 있습니다. 다시 시도해주세요.')
         else:
-            form = UserCompareInputForm()
-    except UserBodyInput.DoesNotExist:
+            form = UserCompareInputForm(instance=user_compare_input)
+    except UserCompareInput.DoesNotExist:
         # 사용자의 사이즈 정보가 없는 경우, 새로운 정보를 입력하는 폼을 생성
         if request.method == 'POST':
-            form = UserBodyInputForm(request.POST)
+            form = UserCompareInputForm(request.POST)
             if form.is_valid():
                 user_body_input = form.save(commit=False)
                 user_body_input.user = request.user
@@ -90,6 +89,6 @@ def compare(request):
             else:
                 messages.error(request, '올바르지 않은 데이터가 포함되어 있습니다. 다시 시도해주세요.')
         else:
-            form = UserBodyInputForm()
+            form = UserCompareInputForm()
     
     return render(request, 'user/U_compare.html', {'form': form})

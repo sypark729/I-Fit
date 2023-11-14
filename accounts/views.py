@@ -11,6 +11,7 @@ import hashlib
 
 # 회원 가입
 def signup(request):
+    context = {}
     # signup 으로 POST 요청이 왔을 때, 새로운 유저를 만드는 절차를 밟는다.
     if request.method == 'POST':
         # password와 confirm에 입력된 값이 같다면
@@ -22,6 +23,10 @@ def signup(request):
             response = redirect('/')
             response.set_cookie('username', hashlib.sha256(user.username.encode()).hexdigest()) # 쿠키 설정
             return response
+        else:
+            # 비밀번호가 일치하지 않는 경우 에러 메시지를 설정하여 회원가입 화면으로 리다이렉트
+            context['error'] = '아이디나 비밀번호가 잘못되었습니다.'
+            return render(request, 'accounts/signup.html', context)
     # signup으로 GET 요청이 왔을 때, 회원가입 화면을 띄워준다.
     return render(request, 'accounts/signup.html')
 

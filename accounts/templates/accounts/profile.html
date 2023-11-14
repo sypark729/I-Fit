@@ -7,6 +7,7 @@
     <h1>안녕하세요, {{ request.user.username }}님 !</h1>
     
     {% if user_body_input %}
+        <p> {{ request.user.username }}님이 입력하신 신체 정보입니다.</p>
         <p>키 : {{ user_body_input.height }} cm</p>
         <p>몸무게 : {{ user_body_input.weight }} kg</p>
         <p>성별 : {{ user_body_input.gender }}</p>

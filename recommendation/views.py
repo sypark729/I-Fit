@@ -1,84 +1,63 @@
 from django.shortcuts import render, redirect
-from .forms import SizeRecommendationForm
-from .utils import recommend_size
-from django.http import HttpResponse  # HttpResponse 추가
+from .utils import recommend_size, diff
 
 def recommendation(request):
-    if request.method == 'POST':
-        # form을 직접 생성하지 않고, POST 데이터를 사용하지 않는다.
-        # form = SizeRecommendationForm(request.POST)
+        size_differences = diff(request)
 
-        # POST 데이터에서 필요한 값을 직접 추출
-        predict_top = request.session.get('predict_top', 0)
-        predict_chest = request.session.get('predict_chest', 0)
-        predict_shoulder = request.session.get('predict_shoulder', 0)
-        predict_arm = request.session.get('predict_arm', 0)
-        predict_waist = request.session.get('predict_waist', 0)
-        predict_ass = request.session.get('predict_ass', 0)
-        predict_bottom = request.session.get('predict_bottom', 0)
-        predict_thighs = request.session.get('predict_thighs', 0)
-        clothing_type = request.session.get('clothing_type')
+        predicted_sizes = {
+            'shoulder': request.session.get('predict_shoulder', 0),
+            'chest': request.session.get('predict_chest', 0),
+            'total_length': request.session.get('predict_top', 0),
+            'sleeve': request.session.get('predict_arm', 0),
+            'waist': request.session.get('predict_waist', 0),
+            'hip': request.session.get('predict_ass', 0),
+            'bottom_length': request.session.get('predict_bottom', 0),
+            'thighs': request.session.get('predict_thighs', 0),
+        }
 
-        # 예측한 사용자 신체 치수 정보
-        print(f"predict_top: {predict_top}")
+        clothes_sizes = {
+            'shoulder': request.session.get('shoulder', 0),
+            'chest': request.session.get('chest', 0),
+            'total_length': request.session.get('total_length', 0),
+            'sleeve': request.session.get('sleeve', 0),
+            'waist': request.session.get('waist', 0),
+            'hip': request.session.get('hip', 0),
+            'bottom_length': request.session.get('bottom_length', 0),
+            'thighs': request.session.get('thigh', 0),
+    }
+        for size_name, predicted_size in predicted_sizes.items():
+            print(f"Predicted {size_name}: {predicted_size}")
 
-        # 상의
-        if clothing_type in ['outer', 'top']:
-            clothes_shoulder = request.session.get('clothes_shoulder', 0)
-            clothes_chest = request.session.get('clothes_chest', 0)
-            clothes_total_length = request.session.get('clothes_total_length', 0)
-            clothes_sleeve = request.session.get('clothes_sleeve', 0)
+        for size_name, clothes_size in clothes_sizes.items():
+            print(f"Clothes {size_name}: {clothes_size}")
 
-            diff_shoulder = abs(predict_shoulder - clothes_shoulder)
-            diff_chest = abs(predict_chest - clothes_chest)
-            diff_total_length = abs(predict_top - clothes_total_length)
-            diff_sleeve = abs(predict_arm - clothes_sleeve)
 
-            request.session['diff_shoulder'] = diff_shoulder
-            request.session['diff_chest'] = diff_chest
-            request.session['diff_total_length'] = diff_total_length
-            request.session['diff_sleeve'] = diff_sleeve
+        # 추천 사이즈 계산
+        recommended_sizes = recommend_size(request)
 
-        # 하의
-        elif clothing_type in ['bottom', 'skirt']:
-            clothes_waist = request.session.get('clothes_waist', 0)
-            clothes_hip = request.session.get('clothes_hip', 0)
-            clothes_bottom_length = request.session.get('clothes_bottom_length', 0)
-            clothes_thigh = request.session.get('clothes_thigh', 0)
+        formatted_shoulder = "{:.2f}".format(float(recommended_sizes.get('recommended_size_shoulder', 0)))
+        formatted_chest = "{:.2f}".format(float(recommended_sizes.get('recommended_size_chest', 0)))
+        formatted_total_length = "{:.2f}".format(float(recommended_sizes.get('recommended_size_total_length', 0)))
+        formatted_sleeve = "{:.2f}".format(float(recommended_sizes.get('recommended_size_sleeve', 0)))
+        formatted_waist = "{:.2f}".format(float(recommended_sizes.get('recommended_size_waist', 0)))
+        formatted_hip = "{:.2f}".format(float(recommended_sizes.get('recommended_size_hip', 0)))
+        formatted_bottom_length = "{:.2f}".format(float(recommended_sizes.get('recommended_size_bottom_length', 0)))
+        formatted_thigh = "{:.2f}".format(float(recommended_sizes.get('recommended_size_thigh', 0)))
 
-            diff_waist = abs(predict_waist - clothes_waist)
-            diff_hip = abs(predict_ass - clothes_hip)
-            diff_bottom_length = abs(predict_bottom - clothes_bottom_length)
-            diff_thigh = abs(predict_thighs - clothes_thigh)
+        result_data = {
+            'recommended_size_shoulder': formatted_shoulder,
+            'recommended_size_chest': formatted_chest,
+            'recommended_size_total_length': formatted_total_length,
+            'recommended_size_sleeve': formatted_sleeve,
+            'recommended_size_waist': formatted_waist,
+            'recommended_size_hip': formatted_hip,
+            'recommended_size_bottom_length': formatted_bottom_length,
+            'recommended_size_thigh': formatted_thigh,
+            'size_differences': size_differences,
+            'recommended_sizes': recommended_sizes,
+            'predicted_sizes': predicted_sizes,
+        }
 
-            request.session['diff_waist'] = diff_waist
-            request.session['diff_hip'] = diff_hip
-            request.session['diff_bottom_length'] = diff_bottom_length
-            request.session['diff_thigh'] = diff_thigh
-
-        print(f"Session data: {request.session}")
-
-        # 추천 함수 호출 위치 수정
-        result_data = recommend_size(request)
-        print(f"Session data after recommend_size: {request.session}")
-        print(result_data)
-
-        result_data.update({
-            'diff_shoulder': request.session.get('diff_shoulder'),
-            'diff_chest': request.session.get('diff_chest'),
-            'diff_total_length': request.session.get('diff_total_length'),
-            'diff_sleeve': request.session.get('diff_sleeve'),
-            'diff_waist': request.session.get('diff_waist'),
-            'diff_hip': request.session.get('diff_hip'),
-            'diff_bottom_length': request.session.get('diff_bottom_length'),
-            'diff_thigh': request.session.get('diff_thigh'),
-        })
+        print("Result Data:", result_data)  # 중간 결과 확인
 
         return render(request, 'recommendation/result.html', result_data)
-
-    else:
-        # 폼을 생성하는 부분 생략
-        # form = SizeRecommendationForm()
-
-        # 폼이 필요하지 않은 경우 바로 결과값을 보여줌
-        return render(request, 'recommendation/result.html', {'form': None})

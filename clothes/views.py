@@ -13,6 +13,8 @@ def clothes(request):
         print( request.session.get('user_height') )
 
         if form.is_valid():
+            print("Form is valid")
+            print(form.cleaned_data)
             clothing_type = form.cleaned_data['clothing_type']
             # 선택한 옷의 종류에 따라 필요한 옷 치수 입력을 요구하거나 입력된 데이터를 처리합니다.
             if clothing_type in ['outer', 'top']:
@@ -39,8 +41,8 @@ def clothes(request):
                 request.session['hip'] = hip
                 request.session['bottom_length'] = bottom_length
                 request.session['thigh'] = thigh
-
-            return redirect('recommendation')
+            print(form.cleaned_data)
+            return redirect('/recommendation')
         print(f"Session data after recommend_size: {request.session}")
     else:
 

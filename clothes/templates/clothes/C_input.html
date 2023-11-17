@@ -185,13 +185,31 @@
 										<h2>메뉴</h2>
 									</header>
 									<ul>
-									
+                                        <li><a href="{% url 'accounts:profile' %}">프로필</a></li>
 										<li><a href="{% url 'user:user' %}">신체정보 입력</a></li>
 										<li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
 
 									</ul>
 								</nav>
-
+                               
+                                <section>
+									<header class="major">
+										<h2>추천 색상</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/soft-color-gradient/canvas.min.webp" alt="" /></a>
+											<p>회색에서 분홍색을 거쳐 연한 회색으로 서서히 변하는 색상으로 부드럽고 편안한 느낌</p>
+											
+										</article>
+										<article>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/mango-gradient/canvas.min.webp" alt="" /></a>
+											<p>연한 황색에서 시작하여 진한 빨간색으로 서서히 변하는 색상으로 화면에 따뜻하고 활기찬 느낌</p>
+										</article>
+							
+									</div>
+									
+								</section>
 							<!-- Footer -->
 								<footer id="footer">
 									<p class="copyright">&copy; Made by I-FIT Team. 2023 I-FIT Site. <br>Design by <a href="https://html5up.net">HTML5 UP</a>.</p>

@@ -8,59 +8,83 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="{% static "css2\main.css" %}" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <style>
-			
+        <linkrel="stylesheet" href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"/>
+		<!-- Ripple Effect from cdn -->
+		<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
+		<style>
+			.form-header {
+                font-size: 28px;
+                color: #333333;
+                text-align: center;
+                margin-bottom: 30px;
+            }
 		
-			/* 폼 그룹 스타일 */
-			.form-group {
-				width: 50%;
-				margin: auto;
-				background-color: white;
-				border-radius: 5px;
-				padding: 20px;
-				box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-			}
-		
-			/* 폼 제목 스타일 */
-			.form-title {
-				text-align: center;
-				color: #333;
-				margin-bottom: 20px;
-				font-size: 24px;
-				font-weight: bold;
-			}
-		
-			/* 폼 컨트롤 스타일 */
-			.form-control {
-				height: 50px;
-				width: 50%; 
-				padding: 10px;
-				border-radius: 5px;
-				border: 1px solid #ddd;
-				margin-bottom: 20px;
-			}
-		
-			/* 버튼 스타일 */
-			.btn-primary {
-				background-color: #0084ff;
-				border: none;
-				color: white;
-				padding: 15px 32px;
-				text-align: center;
-				text-decoration: none;
-				display: inline-block;
-				font-size: 16px;
-				margin: 4px 2px;
-				cursor: pointer;
-				border-radius: 5px;
-			}
-		
-			/* 반응형 디자인 */
-			@media screen and (max-width: 768px) {
+			<style>
+				/* 폼 그룹 스타일 */
 				.form-group {
-					width: 100%;
+					width: 60%;
+					margin: auto;
+					background-color: #f8f9fa;
+					border-radius: 10px;
+					padding: 30px;
+					box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
 				}
-			}
+			
+				/* 폼 제목 스타일 */
+				.form-title {
+					text-align: center;
+					color: #343a40;
+					margin-bottom: 30px;
+					font-size: 26px;
+					font-weight: bold;
+				}
+			
+				/* 폼 컨트롤 스타일 */
+				.form-control {
+					height: 50px;
+					width: 100%; 
+					padding: 10px;
+					border-radius: 5px;
+					border: 1px solid #ced4da;
+					margin-bottom: 20px;
+					font-size: 14px;
+				}
+				.form-header {
+					font-size: 28px;
+					color: #333333;
+					text-align: center;
+					margin-bottom: 30px;
+				}
+
+				/* 버튼 스타일 */
+				.btn-primary {
+					background-color: #007bff;
+					border: none;
+					color: white;
+					padding: 15px 32px;
+					text-align: center;
+					text-decoration: none;
+					display: inline-block;
+					font-size: 16px;
+					margin: 4px 2px;
+					cursor: pointer;
+					border-radius: 5px;
+				}
+			
+				/* 레이블 스타일 */
+				label {
+					font-weight: bold;
+					color: #495057;
+					margin-bottom: 10px;
+				}
+			
+				/* 반응형 디자인 */
+				@media screen and (max-width: 768px) {
+					.form-group {
+						width: 90%;
+					}
+				}
+			</style>
             
         </style>
 	</head>
@@ -105,7 +129,7 @@
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>사용자 신체정보 입력</h2>
+										<h2 class="form-header">사용자 신체정보 입력</h2>
 									</header>
                                     <form method="post">
                                         {% csrf_token %}
@@ -122,9 +146,13 @@
                                                 <option value="female">여성</option>
                                             </select><br>
                                             <br>
-                                            <input class='btn btn-primary' type='submit' value='입력'>
+                                            <button class="group relative h-12 w-48 overflow-hidden rounded-2xl bg-green-500 text-lg font-bold text-black">
+												입력
+												<div class="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+											  </button>
                                         </div>
                                     </form>
+									
                                     
 								</section>
 
@@ -153,7 +181,7 @@
 										<h2>메뉴</h2>
 									</header>
 									<ul>
-									
+										<li><a href="{% url 'accounts:profile' %}">프로필</a></li>
 										<li><a href="{% url 'user:user' %}">신체정보 입력</a></li>
 										<li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
 										<!--<li>
@@ -171,29 +199,24 @@
 								</nav>
 
 							<!-- Section -->
-								<!--<section>
+								<section>
 									<header class="major">
-										<h2>색상 소개</h2>
+										<h2>추천 색상</h2>
 									</header>
 									<div class="mini-posts">
 										<article>
-											<a href="#" class="image"><img src="static\images\pic04.jpg" alt="" /></a>
-											<p>오늘의 쿨톤 의상 컨셉에 대해서 소개합니다.</p>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/soft-color-gradient/canvas.min.webp" alt="" /></a>
+											<p>회색에서 분홍색을 거쳐 연한 회색으로 서서히 변하는 색상으로 부드럽고 편안한 느낌</p>
+											
 										</article>
 										<article>
-											<a href="#" class="image"><img src="static\images\pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/mango-gradient/canvas.min.webp" alt="" /></a>
+											<p>연한 황색에서 시작하여 진한 빨간색으로 서서히 변하는 색상으로 화면에 따뜻하고 활기찬 느낌</p>
 										</article>
-										<article>
-											<a href="#" class="image"><img src="static\images\pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
+							
 									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">더보기</a></li>
-									</ul>
-								</section>-->
-
+									
+								</section>
 							
 
 							<!-- Footer -->

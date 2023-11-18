@@ -1,18 +1,325 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
+{% load static %}
 <html>
-<head>
-    <title>사용자 profile page</title>
-</head>
-<body>
-    <h1>안녕하세요, {{ request.user.username }}님 !</h1>
-    
-    {% if user_body_input %}
-        <p> {{ request.user.username }}님이 입력하신 신체 정보입니다.</p>
-        <p>키 : {{ user_body_input.height }} cm</p>
-        <p>몸무게 : {{ user_body_input.weight }} kg</p>
-        <p>성별 : {{ user_body_input.gender }}</p>
-    {% else %}
-        <p>No user body input available.</p>
-    {% endif %}
-</body>
+	<head>
+		<title>I-Fit - profile page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="{% static "css2\main.css" %}" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+         <!-- stylesheet -->
+		<link
+		rel="stylesheet"
+		href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+		/>
+
+		<!-- Font Awesome Link -->
+		<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+		integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+		crossorigin="anonymous"
+		/>
+		<style>
+			.form-header {
+				font-size: 28px;
+				color: #333333;
+				text-align: center;
+				margin-bottom: 30px;
+			}
+
+		
+			/* 폼 그룹 스타일 */
+			.form-group {
+				width: 50%;
+				margin: auto;
+				background-color: white;
+				border-radius: 5px;
+				padding: 20px;
+				box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+                float: left; /* 폼을 왼쪽으로 이동 */
+			}
+		
+			/* 폼 제목 스타일 */
+			.form-title {
+				text-align: center;
+				color: #333;
+				margin-bottom: 20px;
+				font-size: 24px;
+				font-weight: bold;
+			}
+		
+			/* 폼 컨트롤 스타일 */
+			.form-control {
+				height: 50px;
+				width: 50%; 
+				padding: 10px;
+				border-radius: 5px;
+				border: 1px solid #ddd;
+				margin-bottom: 20px;
+			}
+		
+			/* 버튼 스타일 */
+			.btn-primary {
+				background-color: #0084ff;
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+		
+			/* 반응형 디자인 */
+			@media screen and (max-width: 768px) {
+				.form-group {
+					width: 100%;
+				}
+			}
+
+			
+			dl dt, dl dd {
+				display: inline-block;
+				margin: 0;
+			}
+			
+			dl dt {
+				font-weight: bold;
+				margin-right: 5px;
+			}
+            
+        </style>
+	</head>
+	<!--<div class='preloader'><div class='loaded'>&nbsp;</div></div>-->
+	<body class="is-preload">
+
+		
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href = "{% url 'main:main' %}" class="logo"><strong>I-FIT</strong> 'Recommend clothes size to users WebSite'</a>
+									<ul class="icons">
+										<li><a href="https://html5up.net" class="icon brands fa-html5"><span class="label">Html5</span></a></li>
+										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Banner -->
+								<!--<section id="banner">
+									<div class="content">
+										<header>
+											<h1>'I-FIT' <br />
+												</h1>
+											<p>맞춤 의류 서비스를 제공합니다.</p>
+										</header>
+										<p>'I-FIT'은 자신의 사이즈 찾아주는 웹 서비스입니다. 간단한 신체정보와 입을 옷에 대한 치수 등을 입력하면  비교를 하여 사이즈를 추천해드립니다. 지금 바로 시작해보세요!</p>
+										<ul class="actions">
+											<li><a href="{% url 'accounts:login' %}" class="button big">시작하기</a></li>
+										</ul>
+									</div>
+									<span class="image object">
+										<img src="static\images\logo2.PNG" alt="" style="max-width: 400px; margin-left: auto; margin-right: auto;"/>
+									</span>
+								</section>-->
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2 class="form-header">사용자 프로필</h2>
+									</header>
+									<!-- component -->
+									<div class="flex flex-wrap">
+										<div class="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mr-4" >
+											<div class="relative mx-4 mt-4 h-80 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+											<img src="https://cdn.icon-icons.com/icons2/2406/PNG/512/user_account_icon_145918.png" alt="profile-picture" />
+											</div>
+											{% if user_body_input %}
+											<div class="p-6 text-center">
+											<h4 class="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+												{{ request.user.username }}
+											</h4>
+											<p class="block bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-sans text-base font-medium leading-relaxed text-transparent antialiased">
+												키 : {{ user_body_input.height }} cm
+											</p>
+											<p class="block bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-sans text-base font-medium leading-relaxed text-transparent antialiased">
+												몸무게 : {{ user_body_input.weight }} kg
+											</p>
+											<p class="block bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-sans text-base font-medium leading-relaxed text-transparent antialiased">
+												성별 : {{ user_body_input.gender }}
+											</p>
+											</div>
+											{% else %}
+												<div class="p-6 text-center">
+												   <p>No user body input available.</p>
+												</div>
+											{% endif %}
+										</div>
+										<div class="bg-white overflow-hidden shadow rounded-lg border">
+											<div class="px-4 py-5 sm:px-6">
+												<h3 class="text-lg leading-6 font-medium text-gray-900">
+													User Profile
+												</h3>
+												<p class="mt-1 max-w-2xl text-sm text-gray-500">
+													This is some information about the user.
+												</p>
+											</div>
+											<div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+												<dl class="sm:divide-y sm:divide-gray-200">
+													{% if user_body_input %}
+													<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+														<dt class="text-sm font-medium text-gray-500">
+															Full name
+														</dt>
+														<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+															{{ request.user.username }}
+														</dd>
+													</div>
+													<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+														<dt class="text-sm font-medium text-gray-500">
+															Height
+														</dt>
+														<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+															{{ user_body_input.height }} cm
+														</dd>
+													</div>
+													<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+														<dt class="text-sm font-medium text-gray-500">
+															Weight
+														</dt>
+														<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+															{{ user_body_input.weight }} kg
+														</dd>
+													</div>
+													<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+														<dt class="text-sm font-medium text-gray-500">
+															Gender
+														</dt>
+														<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+															{{ user_body_input.gender }}
+														</dd>
+													</div><br><br>
+													{% else %}
+														   <p>No user body input available.</p>
+													{% endif %}
+												</dl>
+											</div>
+										</div>
+										<div class="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mr-4">
+											
+										</div>
+										<div class="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+									
+										</div>
+									</div>
+									
+  
+ 
+                                    
+                                    <!--<body>
+                                        <h1>안녕하세요, {{ request.user.username }}님 !</h1>
+                                        <br><br>
+                                        {% if user_body_input %}
+                                            <p>키 : {{ user_body_input.height }} cm</p>
+                                            <p>몸무게 : {{ user_body_input.weight }} kg</p>
+                                            <p>성별 : {{ user_body_input.gender }}</p>
+                                        {% else %}
+                                            <p>No user body input available.</p>
+                                        {% endif %}
+                                    </body>-->
+                                    
+								</section>
+
+							
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+								<!--<section>
+									<a href="{% url 'main:main' %}" class="image"><img src="static\images\logo2.PNG" alt="" /></a>
+								</section>-->
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>메뉴</h2>
+									</header>
+									<ul>
+                                        <li><a href="{% url 'accounts:profile' %}">프로필</a></li>
+										<li><a href="{% url 'user:user' %}">신체정보 입력</a></li>
+										<li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
+										<!--<li>
+											<span class="opener">신체정보 및 사이즈표 입력</span>
+											<ul>
+												<li><a href="#">Lorem Dolor</a></li>
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+											</ul>
+										</li>-->
+										
+
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>추천 색상</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/soft-color-gradient/canvas.min.webp" alt="" /></a>
+											<p>회색에서 분홍색을 거쳐 연한 회색으로 서서히 변하는 색상으로 부드럽고 편안한 느낌</p>
+											
+										</article>
+										<article>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/mango-gradient/canvas.min.webp" alt="" /></a>
+											<p>연한 황색에서 시작하여 진한 빨간색으로 서서히 변하는 색상으로 화면에 따뜻하고 활기찬 느낌</p>
+										</article>
+							
+									</div>
+									
+								</section>
+
+							
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Made by I-FIT Team. 2023 I-FIT Site. <br>Design by <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts type="text/css" -->
+			<script src="static/js2/jquery.min.js" type="text/js"></script>
+			<script src="static/js2/browser.min.js" type="text/js"></script>
+			<script src="static/js2/breakpoints.min.js" type="text/js"></script>
+			<script src="static/js2/util.js" type="text/js"></script>
+			<script src="static/js2/main.js" type="text/js"></script>
+
+	</body>
 </html>

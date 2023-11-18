@@ -3,11 +3,27 @@
 {% load static %}
 <html>
 	<head>
-		<title>I-FIT</title>
+		<title>I-FIT 결과 페이지</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="{% static "css2\main.css" %}" />
-        <style>
+        
+		 <!-- stylesheet -->
+		 <link
+		 rel="stylesheet"
+		 href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+		 />
+ 
+		 <!-- Font Awesome Link -->
+		 <link
+		 rel="stylesheet"
+		 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+		 integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+		 crossorigin="anonymous"
+		 />
+
+		<style>
+			
             .container {
                 max-width: 400px;
                 width: 100%;
@@ -20,7 +36,14 @@
                 padding: 40px;
                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             }
-        
+			.result-container {
+				background-color: #ffffff;
+				border-radius: 8px;
+				padding: 40px;
+				box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+				width: 50%;
+				float: left; /* 결과를 왼쪽으로 이동 */
+			}
             h2 {
                 font-size: 28px;
                 color: #333333;
@@ -68,6 +91,29 @@
                     width: 100%;
                 }
             }
+			table {
+				width: 100%;
+			}
+			
+			table td {
+				padding: 10px;
+				border-bottom: 1px solid #ddd;
+			}
+			.right-table {
+				margin-left: 20px; /* 이 값을 조절하여 원하는 간격을 설정하세요. */
+				margin-right: 10px;
+				margin-top: 15px;
+			}
+			.left-table {
+				margin-left: 20px;
+				margin-top: 15px;
+			}
+			.highlighted-header {
+				background-color: #57B894; /* 이 값을 조정하여 원하는 배경색을 설정하세요. */
+				padding: 10px; /* 패딩을 추가하여 텍스트 주위에 공간을 만드세요. */
+				color: #ffffff; /* 텍스트 색상을 변경하세요. */
+			}
+			
         </style>
         <script>
             function toggleSizeInputs() {
@@ -106,42 +152,61 @@
 										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
 									</ul>
 								</header>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>사용자 신체정보 입력</h2>
-									</header>
-									<!-- <form method="post" class="form-group"> -->
-										<!-- {% csrf_token %} -->
-                                    <body>
-                                        <h1>사이즈 추천 결과</h1>
-                                        	<p>추천된 사이즈 : {{ recommended_size }}</p>
-										<h1>사이즈 비교 결과</h1>
-										<p>어깨 너비 추천 차이: {{ recommended_size_shoulder }}cm</p>
-										<p>가슴 둘레 추천 차이: {{ recommended_size_chest }}cm</p>
-										<p>전체 길이 추천 차이: {{ recommended_size_total_length }}cm</p>
-										<p>소매 길이 추천 차이: {{ recommended_size_sleeve }}cm</p>
-										<p>허리 둘레 추천 차이: {{ recommended_size_waist }}cm</p>
-										<p>엉덩이 둘레 추천 차이: {{ recommended_size_hip }}cm</p>
-										<p>바지 길이 추천 차이: {{ recommended_size_bottom_length }}cm</p>
-										<p>허벅지 둘레 추천 차이: {{ recommended_size_thigh }}cm</p>
-                                        <!-- 다른 정보를 표시할 수 있으면 여기에 추가 -->
-
-										<h2>{{ request.user.username }}님의 신체 사이즈 예측</h2>
-										<p>어깨 너비 : {{ predicted_sizes.shoulder }}</p>
-										<p>가슴 둘레 : {{ predicted_sizes.chest }}</p>
-										<p>상체 총장 : {{ predicted_sizes.total_length }}</p>
-										<p>팔 길이 : {{ predicted_sizes.sleeve }}</p>
-										<p>허리 둘레 : {{ predicted_sizes.waist }}</p>
-										<p>엉덩이 둘레 : {{ predicted_sizes.hip }}</p>
-										<p>하체 총장 : {{ predicted_sizes.bottom_length }}</p>
-										<p>허벅지 둘레 : {{ predicted_sizes.thighs }}</p>
-                                    </body>
-                                <!-- </form> -->
-								</section>
-
 							
+								
+							<section id="banner">
+								<img src="{% static 'css2/size.png' %}" alt="Size Image">
+								
+							</section>
+							<!-- Section -->
+							<section>
+								<header class="major">
+									<h2 class="form-header">결과</h2>
+								</header>
+								<!-- component -->
+								<div class="flex flex-wrap">
+									
+									<div class="w-full md:w-1/2 p-3">
+										<div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+											<div class="flex">
+												<div class="w-1/2 left-table">
+													<h2 class="highlighted-header" >사이즈 추천 결과</h2>
+													<table>
+														<tr><td>추천된 사이즈:</td><td>{{ recommended_size }}</td></tr>
+													</table>
+													<table>
+														<h2 class="highlighted-header">사이즈 비교 결과</h2>
+														<tr><td>어깨 너비 추천 차이:</td><td>{{ recommended_size_shoulder }} cm</td></tr>
+														<tr><td>가슴 둘레 추천 차이:</td><td>{{ recommended_size_chest }} cm</td></tr>
+														<tr><td>전체 길이 추천 차이:</td><td>{{ recommended_size_total_length }} cm</td></tr>
+														<tr><td>소매 길이 추천 차이:</td><td>{{ recommended_size_sleeve }} cm</td></tr>
+														<tr><td>허리 둘레 추천 차이:</td><td>{{ recommended_size_waist }} cm</td></tr>
+														<tr><td>엉덩이 둘레 추천 차이:</td><td>{{ recommended_size_hip }} cm</td></tr>
+														<tr><td>바지 길이 추천 차이:</td><td>{{ recommended_size_bottom_length }} cm</td></tr>
+														<tr><td>허벅지 둘레 추천 차이:</td><td>{{ recommended_size_thigh }} cm</td></tr>
+													</table>
+												</div>
+												<div class="w-1/2 right-table">
+													<h2 class="highlighted-header">{{ request.user.username }}님의 신체 사이즈 예측</h2>
+													<table>
+														<tr><td>어깨 너비:</td><td>{{ predicted_sizes.shoulder }} cm</td></tr>
+														<tr><td>가슴 둘레:</td><td>{{ predicted_sizes.chest }} cm</td></tr>
+														<tr><td>상체 총장:</td><td>{{ predicted_sizes.total_length }} cm</td></tr>
+														<tr><td>팔 길이:</td><td>{{ predicted_sizes.sleeve }} cm</td></tr>
+														<tr><td>허리 둘레:</td><td>{{ predicted_sizes.waist }} cm</td></tr>
+														<tr><td>엉덩이 둘레:</td><td>{{ predicted_sizes.hip }} cm</td></tr>
+														<tr><td>하체 총장:</td><td>{{ predicted_sizes.bottom_length }} cm</td></tr>
+														<tr><td>허벅지 둘레:</td><td>{{ predicted_sizes.thighs }} cm</td></tr>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> 
+							</section>	
+						
+							
+
 
 						</div>
 					</div>
@@ -166,7 +231,7 @@
 										<h2>메뉴</h2>
 									</header>
 									<ul>
-									
+										<li><a href="{% url 'accounts:profile' %}">프로필</a></li>
 										<li><a href="{% url 'user:user' %}">신체치수 입력</a></li>
 										<li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
 										
@@ -174,7 +239,24 @@
 									</ul>
 								</nav>
 
+								<section>
+									<header class="major">
+										<h2>추천 색상</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/soft-color-gradient/canvas.min.webp" alt="" /></a>
+											<p>회색에서 분홍색을 거쳐 연한 회색으로 서서히 변하는 색상으로 부드럽고 편안한 느낌</p>
+											
+										</article>
+										<article>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/mango-gradient/canvas.min.webp" alt="" /></a>
+											<p>연한 황색에서 시작하여 진한 빨간색으로 서서히 변하는 색상으로 화면에 따뜻하고 활기찬 느낌</p>
+										</article>
 							
+									</div>
+									
+								</section>
 
 							<!-- Footer -->
 								<footer id="footer">

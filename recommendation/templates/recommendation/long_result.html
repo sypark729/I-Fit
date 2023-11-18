@@ -7,13 +7,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="{% static "css2\main.css" %}" />
-        
+
 		 <!-- stylesheet -->
 		 <link
 		 rel="stylesheet"
 		 href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
 		 />
- 
+
 		 <!-- Font Awesome Link -->
 		 <link
 		 rel="stylesheet"
@@ -23,13 +23,13 @@
 		 />
 
 		<style>
-			
+
             .container {
                 max-width: 400px;
                 width: 100%;
                 margin: 0 auto;
             }
-        
+
             .form-container {
                 background-color: #ffffff;
                 border-radius: 8px;
@@ -50,18 +50,18 @@
                 text-align: center;
                 margin-bottom: 30px;
             }
-        
+
             form {
                 display: flex;
                 flex-direction: column;
             }
-        
+
             label {
                 margin-top: 20px;
                 color: #666666;
                 font-weight: bold;
             }
-        
+
             select,
             input[type="number"],
             button[type="submit"] {
@@ -73,18 +73,18 @@
                 font-size: 16px;
                 margin-top: 5px;
             }
-        
+
             button[type="submit"] {
                 background-color: #4CAF50;
                 color: #ffffff;
                 cursor: pointer;
                 margin-top: 20px;
             }
-        
+
             button[type="submit"]:hover {
                 background-color: #45a049;
             }
-            
+
             /* 추가적으로 화면 크기에 따른 반응형 디자인을 적용하고 싶다면 아래와 같은 미디어 쿼리를 이용할 수 있습니다. */
             @media screen and (max-width: 768px) {
                 .form-group {
@@ -94,7 +94,7 @@
 			table {
 				width: 100%;
 			}
-			
+
 			table td {
 				padding: 10px;
 				border-bottom: 1px solid #ddd;
@@ -113,18 +113,18 @@
 				padding: 10px; /* 패딩을 추가하여 텍스트 주위에 공간을 만드세요. */
 				color: #ffffff; /* 텍스트 색상을 변경하세요. */
 			}
-			
+
         </style>
         <script>
             function toggleSizeInputs() {
                 var clothingType = document.getElementById('clothing-type').value;
                 var outerTopSizes = document.getElementById('outer-top-sizes');
                 var bottomSkirtSizes = document.getElementById('bottom-skirt-sizes');
-    
+
                 // 모든 치수 입력 필드를 숨김
                 outerTopSizes.style.display = 'none';
                 bottomSkirtSizes.style.display = 'none';
-    
+
                 if (clothingType === 'outer' || clothingType === 'top') {
                     outerTopSizes.style.display = 'block';
                 } else if (clothingType === 'bottom' || clothingType === 'skirt') {
@@ -136,11 +136,11 @@
 	<!--<div class='preloader'><div class='loaded'>&nbsp;</div></div>-->
 	<body class="is-preload">
 
-		
+
 		<!-- Wrapper -->
 			<div id="wrapper">
 				<!-- Main -->
-					
+
 					<div id="main">
 						<div class="inner">
 
@@ -152,11 +152,11 @@
 										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
 									</ul>
 								</header>
-							
-								
+
+
 							<section id="banner">
 								<img src="{% static 'css2/size.png' %}" alt="Size Image">
-								
+
 							</section>
 							<!-- Section -->
 							<section>
@@ -165,7 +165,7 @@
 								</header>
 								<!-- component -->
 								<div class="flex flex-wrap">
-									
+
 									<div class="w-full md:w-1/2 p-3">
 										<div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
 											<div class="flex">
@@ -176,14 +176,10 @@
 													</table>
 													<table>
 														<h2 class="highlighted-header">사이즈 비교 결과</h2>
-														<tr><td>어깨 너비 추천 차이:</td><td>{{ recommended_size_shoulder }} cm</td></tr>
-														<tr><td>가슴 둘레 추천 차이:</td><td>{{ recommended_size_chest }} cm</td></tr>
-														<tr><td>전체 길이 추천 차이:</td><td>{{ recommended_size_total_length }} cm</td></tr>
-														<tr><td>소매 길이 추천 차이:</td><td>{{ recommended_size_sleeve }} cm</td></tr>
-														<tr><td>허리 둘레 추천 차이:</td><td>{{ recommended_size_waist }} cm</td></tr>
-														<tr><td>엉덩이 둘레 추천 차이:</td><td>{{ recommended_size_hip }} cm</td></tr>
-														<tr><td>바지 길이 추천 차이:</td><td>{{ recommended_size_bottom_length }} cm</td></tr>
-														<tr><td>허벅지 둘레 추천 차이:</td><td>{{ recommended_size_thigh }} cm</td></tr>
+														<tr><td>어깨 너비 :</td><td> 옷이 {{ size_differences.shoulder.difference }} cm ({{ size_differences.shoulder.comparison }})</td></tr>
+														<tr><td>가슴 둘레 :</td><td> 옷이 {{ size_differences.chest.difference }} cm ({{ size_differences.chest.comparison }})</td></tr>
+														<tr><td>전체 길이 :</td><td> 옷이 {{ size_differences.ntk.difference }} cm ({{ size_differences.ntk.comparison }})</td></tr>
+														<tr><td>소매 길이 :</td><td> 옷이 {{ size_differences.sleeve.difference }} cm ({{ size_differences.sleeve.comparison }})</td></tr>
 													</table>
 												</div>
 												<div class="w-1/2 right-table">
@@ -204,8 +200,8 @@
 									</div>
 								</div> 
 							</section>	
-						
-							
+
+
 
 
 						</div>
@@ -234,7 +230,7 @@
 										<li><a href="{% url 'accounts:profile' %}">프로필</a></li>
 										<li><a href="{% url 'user:user' %}">신체치수 입력</a></li>
 										<li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
-										
+
 
 									</ul>
 								</nav>
@@ -247,15 +243,15 @@
 										<article>
 											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/soft-color-gradient/canvas.min.webp" alt="" /></a>
 											<p>회색에서 분홍색을 거쳐 연한 회색으로 서서히 변하는 색상으로 부드럽고 편안한 느낌</p>
-											
+
 										</article>
 										<article>
 											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/mango-gradient/canvas.min.webp" alt="" /></a>
 											<p>연한 황색에서 시작하여 진한 빨간색으로 서서히 변하는 색상으로 화면에 따뜻하고 활기찬 느낌</p>
 										</article>
-							
+
 									</div>
-									
+
 								</section>
 
 							<!-- Footer -->

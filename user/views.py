@@ -121,49 +121,49 @@ def compare(request):
 
                 user_top = form.cleaned_data['top']
                 if user_top == 'big':
-                    average_top *= 0.7
+                    average_top *= 0.9
                 elif user_top == 'small':
-                    average_top *= 1.3
+                    average_top *= 1.1
                 user_bottom = form.cleaned_data['bottom']
                 if user_bottom == 'big':
-                    average_bottom *= 0.7
+                    average_bottom *= 0.9
                 elif user_bottom == 'small':
-                    average_bottom *= 1.3
+                    average_bottom *= 1.1
                 user_chest = form.cleaned_data['chest']
                 if user_chest == 'big':
-                    average_chest *= 0.7
+                    average_chest *= 0.9
                 elif user_chest == 'small':
-                    average_chest *= 1.3
+                    average_chest *= 1.1
                 user_shoulder = form.cleaned_data['shoulder']
                 if user_shoulder == 'big':
-                    average_shoulder *= 0.7
+                    average_shoulder *= 0.9
                 elif user_shoulder == 'small':
-                    average_shoulder *= 1.3
+                    average_shoulder *= 1.1
                 user_arm = form.cleaned_data['arm']
                 if user_arm == 'big':
-                    average_arm *= 0.7
+                    average_arm *= 0.9
                 elif user_arm == 'small':
-                    average_arm *= 1.3
+                    average_arm *= 1.1
                 user_neck = form.cleaned_data['neck']
                 if user_neck == 'big':
-                    average_neck *= 0.7
+                    average_neck *= 0.9
                 elif user_neck == 'small':
-                    average_neck *= 1.3
+                    average_neck *= 1.1
                 user_waist = form.cleaned_data['waist']
                 if user_waist == 'big':
-                    average_waist *= 0.7
+                    average_waist *= 0.9
                 elif user_waist == 'small':
-                    average_waist *= 1.3
+                    average_waist *= 1.1
                 user_ass = form.cleaned_data['ass']
                 if user_ass == 'big':
-                    average_top *= 0.7
+                    average_top *= 0.9
                 elif user_ass == 'small':
-                    average_top *= 1.3
+                    average_top *= 1.1
                 user_thighs = form.cleaned_data['thighs']
                 if user_thighs == 'big':
-                    average_thighs *= 0.7
+                    average_thighs *= 0.9
                 elif user_thighs == 'small':
-                    average_thighs *= 1.3
+                    average_thighs *= 1.1
 
                 request.session['predict_top'] = average_top
                 request.session['predict_chest'] = average_chest

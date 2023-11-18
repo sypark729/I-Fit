@@ -6,6 +6,8 @@ class ClothingSizeInputForm(forms.Form):
         ('top', '상의'),
         ('bottom', '바지'),
         ('skirt', '치마'),
+        ('long', '한벌옷'),
+        ('shirt', '셔츠'),
     ]
 
     clothing_type = forms.ChoiceField(label='옷의 종류', choices=CLOTHING_CHOICES)
@@ -16,6 +18,9 @@ class ClothingSizeInputForm(forms.Form):
     total_length = forms.FloatField(label='총장 (cm)', required=False)
     sleeve = forms.FloatField(label='소매길이 (cm)', required=False)
     
+    neck = forms.FloatField(label='목둘레 (cm)', required=False)
+    ntk = forms.FloatField(label='목길이 (cm)', required=False)
+
     waist = forms.FloatField(label='허리단면 (cm)', required=False)
     hip = forms.FloatField(label='엉덩이단면 (cm)', required=False)
     bottom_length = forms.FloatField(label='총장 (cm)', required=False)

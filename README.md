@@ -14,6 +14,9 @@ runserver로 구동 확인
 6. 아우터 추가 여부 <진행중>
 7. csv 파일 속 데이터셋 db로 이전 <완료>
 -----------------------------------------
-8. 11/13 기준 [User_compare_html / clothes(추가) / recommendation 웹 디자인 수정 필요
+8. 11/13 기준 [User_compare_html / clothes(추가)] <완료> / recommendation 웹 디자인 수정
 9. 사이즈 추천 구동 완료 필요 <완료>
 10. 서버 구동 준비 <11/22 전 예정>
+-----------------------------------------
+11. 옷 추가 or to do
+12. recommendation html 4개 디자인 필요

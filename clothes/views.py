@@ -40,28 +40,28 @@ def clothes(request):
 
             elif clothing_type in ['long']:
 
-                shoulder = form.cleaned_data['shoulder']
-                chest = form.cleaned_data['chest']
+                l_shoulder = form.cleaned_data['l_shoulder']
+                l_chest = form.cleaned_data['l_chest']
                 ntk = form.cleaned_data['ntk']
-                sleeve = form.cleaned_data['sleeve']
+                l_sleeve = form.cleaned_data['l_sleeve']
 
-                request.session['shoulder'] = shoulder
-                request.session['chest'] = chest * 2
+                request.session['l_shoulder'] = l_shoulder
+                request.session['l_chest'] = l_chest * 2
                 request.session['ntk'] = ntk
-                request.session['sleeve'] = sleeve
+                request.session['l_sleeve'] = l_sleeve
 
 
             elif clothing_type in ['shirt']:
-                shoulder = form.cleaned_data['shoulder']
-                chest = form.cleaned_data['chest']
-                total_length = form.cleaned_data['total_length']
-                sleeve = form.cleaned_data['sleeve']
+                s_shoulder = form.cleaned_data['s_shoulder']
+                s_chest = form.cleaned_data['s_chest']
+                s_total_length = form.cleaned_data['s_total_length']
+                s_sleeve = form.cleaned_data['s_sleeve']
                 neck = form.cleaned_data['neck']
 
-                request.session['shoulder'] = shoulder
-                request.session['chest'] = chest * 2
-                request.session['total_length'] = total_length
-                request.session['sleeve'] = sleeve
+                request.session['s_shoulder'] = s_shoulder
+                request.session['s_chest'] = s_chest * 2
+                request.session['s_total_length'] = s_total_length
+                request.session['s_sleeve'] = s_sleeve
                 request.session['neck'] = neck
 
             return redirect('/recommendation')

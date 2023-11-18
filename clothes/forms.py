@@ -17,6 +17,15 @@ class ClothingSizeInputForm(forms.Form):
     chest = forms.FloatField(label='가슴단면 (cm)', required=False)
     total_length = forms.FloatField(label='총장 (cm)', required=False)
     sleeve = forms.FloatField(label='소매길이 (cm)', required=False)
+
+    l_shoulder = forms.FloatField(label='어깨너비 (cm)', required=False)
+    l_chest = forms.FloatField(label='가슴단면 (cm)', required=False)
+    l_sleeve = forms.FloatField(label='소매길이 (cm)', required=False)
+
+    s_shoulder = forms.FloatField(label='어깨너비 (cm)', required=False)
+    s_chest = forms.FloatField(label='가슴단면 (cm)', required=False)
+    s_total_length = forms.FloatField(label='총장 (cm)', required=False)
+    s_sleeve = forms.FloatField(label='소매길이 (cm)', required=False)
     
     neck = forms.FloatField(label='목둘레 (cm)', required=False)
     ntk = forms.FloatField(label='목길이 (cm)', required=False)

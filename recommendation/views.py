@@ -24,6 +24,7 @@ def recommendation(request):
             'total_length': request.session.get('total_length', 0),
             'sleeve': request.session.get('sleeve', 0),
             'neck': request.session.get('neck', 0),
+            'ntk': request.session.get('ntk', 0),
             'waist': request.session.get('waist', 0),
             'hip': request.session.get('hip', 0),
             'bottom_length': request.session.get('bottom_length', 0),

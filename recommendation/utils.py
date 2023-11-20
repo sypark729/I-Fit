@@ -44,7 +44,7 @@ def diff(request):
         'thighs': round(request.session.get('thighs', 0), 2),
     }
 
-    # 차이 계산 및 세션에 저장
+    # 차이 계산 및 세션에 저장    
     differences = {}
     for size_name, predicted_size in predicted_sizes.items():
         clothes_size = clothes_sizes.get(size_name, 0)
@@ -55,4 +55,14 @@ def diff(request):
             'comparison': comparison
         }
         request.session[f'diff_{size_name}'] = differences[size_name]
+
+        if comparison == '작습니다':
+            request.session['size_message'] = '옷이 작습니다. 큰 사이즈의 옷을 비교해 보세요.'
+            break  # 하나라도 작은 경우 메시지 표시 후 종료
+        elif comparison == '큽니다':
+            request.session['size_message'] = '옷이 큽니다.'
+        else:
+            # 모든 사이즈가 같거나 큰 경우의 메시지
+            request.session['size_message'] = '옷 사이즈가 적절합니다.'
+
     return differences

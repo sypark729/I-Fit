@@ -169,22 +169,12 @@ def compare(request):
                 request.session['predict_chest'] = average_chest
                 request.session['predict_shoulder'] = average_shoulder
                 request.session['predict_arm'] = average_arm
+                request.session['predict_neck'] = average_neck
+                request.session['predict_ntk'] = average_ntk
                 request.session['predict_waist'] = average_waist
                 request.session['predict_ass'] = average_ass
                 request.session['predict_bottom'] = average_bottom
                 request.session['predict_thighs'] = average_thighs
-
-                print(f"Session data after compare_size: {request.session}")
-
-                # 정상적으로 사용자 신체 치수 예측 확인용 문구 추후 삭제 예정
-                print(f"top: {average_top}")
-                print(f"chest: {average_chest}")
-                print(f"shoulder: {average_shoulder}")
-                print(f"arm: {average_arm}")
-                print(f"waist: {average_waist}")
-                print(f"ass: {average_ass}")
-                print(f"bottom: {average_bottom}")
-                print(f"thighs: {average_thighs}")
 
                 form.save()
                 messages.success(request, '사이즈 정보가 수정되었습니다.')

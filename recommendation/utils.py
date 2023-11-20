@@ -34,10 +34,10 @@ def diff(request):
     clothes_sizes = {
         'shoulder': round(request.session.get('shoulder', 0), 2),
         'chest': round(request.session.get('chest', 0), 2),
-        'ntk': round(request.session.get('ntk', 0), 2),
         'total_length': round(request.session.get('total_length', 0), 2),
-        'neck': round(request.session.get('neck', 0), 2),
         'sleeve': round(request.session.get('sleeve', 0), 2),
+        'ntk': round(request.session.get('ntk', 0), 2),
+        'neck': round(request.session.get('neck', 0), 2),
         'waist': round(request.session.get('waist', 0), 2),
         'hip': round(request.session.get('hip', 0), 2),
         'bottom_length': round(request.session.get('bottom_length', 0), 2),
